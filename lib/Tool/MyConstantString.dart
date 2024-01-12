@@ -1,0 +1,1 @@
+const getStartText="Lorem ipsum dolor sit amet consectetur. Cras nisi pellentesque mollis placerat sed mauris id. Sapien erat sed consequat.";
