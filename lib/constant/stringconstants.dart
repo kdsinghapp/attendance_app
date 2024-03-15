@@ -10,6 +10,7 @@ class StringConstants {
   static const String termConditions ="Terms & Conditions";
   static const String login = 'Login';
   static const String setting = 'Setting';
+  static const String leaveStatus = 'Leave Status';
   static const String or = 'OR';
   static const String no = 'No';
   static const String yes = 'Yes';
@@ -25,7 +26,7 @@ class StringConstants {
   static const String submit='Submit';
   static const String changeEvent='Change Event';
   static const String chosenEvent='Chosen Event';
-  static const String publishEvent='Publish Event';
+  static const String applyForLeave='Apply For Leave';
   static const String addList='Add List';
   static const String add='Add ';
   static const String next='Next';
@@ -43,6 +44,8 @@ class StringConstants {
   static const String sendRequest='SEND REQUEST';
   static const String signUpWithBankId='Sign up with Bank-Id';
   static const String passwordReset='Password Reset';
+  static const String companyName='Company Name';
+  static const String selectGender='Select Gender';
   static const String pleasePutYourEmailOrMobileNumberResetPassword='Please put your email or mobile number to\nreset your password';
   static const String yourPasswordMustBeDifferentFromPreviousUsedPasswords='Your new password must be \n different from previous used passwords.';
   static const String createNewPassword  ='Create New Password';
@@ -72,7 +75,7 @@ class StringConstants {
   static const String open = 'Open';
   static const String close = 'Close';
   static const String home = 'Home';
-  static const String chat = 'Chat';
+  static const String leave = 'Leave';
   static const String list='List';
   static const String attendance='Attendance';
   static const String totalAttendanceStatus='Total Attendance Status';

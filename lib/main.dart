@@ -2,6 +2,7 @@ import 'package:attendance_app/Tool/Styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'Activity/AttendanceDetailActivity.dart';
 import 'Activity/LoginActivity.dart';
 import 'Activity/MainActivity.dart';
 import 'Activity/SplashActivity.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(name: '/loginActivity', page: ()=>const LoginActivity()),
         GetPage(name: '/mainActivity', page: ()=>const MainActivity()),
+        GetPage(name: '/attendanceDetailActivity', page:()=> const AttendanceDetailActivity()),
       ],
       theme:Styles.themeData(false, context),
       debugShowCheckedModeBanner: false,

@@ -1,4 +1,5 @@
 import 'package:attendance_app/Controller/ChangePasswordController.dart';
+import 'package:attendance_app/common/ShowToast.dart';
 import 'package:attendance_app/constant/iconsconstants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -52,7 +53,14 @@ class _ChangePasswordState extends State<ChangePasswordActivity> {
           ):
           GestureDetector(
             onTap: (){
-              //checkGpsLocation();
+              if(controller.formKey.currentState!.validate()){
+                if(controller.newPasswordController.text==controller.cnfPasswordController.text){
+                 controller.changeProgressbarStatus(true);
+                  controller.callingSubmitChangePasswordForm();
+                }else{
+                  showToastMessage('New password and conform password are not matched.');
+                }
+              }
             },
             child: Container(
               height: 50.px,
@@ -98,7 +106,7 @@ class _ChangePasswordState extends State<ChangePasswordActivity> {
                 ),
                 SizedBox(height: 40.px,),
                 CommonWidget.commonTextField(
-                  validator: (value)=>FormValidator.isPasswordValid(value: value),
+                  validator: (value)=>FormValidator.isEmptyValid(value: value),
                   controller: controller.currentPasswordController,
                   isCard: controller.isCurrentPassword.value,
                   focusNode: controller.focusCurrentPassword,
@@ -126,7 +134,7 @@ class _ChangePasswordState extends State<ChangePasswordActivity> {
                 ),
                 SizedBox(height: 10.px,),
                 CommonWidget.commonTextField(
-                  validator: (value) => FormValidator.isPasswordValid(value: value),
+                  validator: (value) => FormValidator.isEmptyValid(value: value),
                   controller: controller.newPasswordController,
                   isCard: controller.isNewPassword.value,
                   focusNode: controller.focusNewPassword,
@@ -154,7 +162,7 @@ class _ChangePasswordState extends State<ChangePasswordActivity> {
                 ),
                 SizedBox(height: 10.px,),
                 CommonWidget.commonTextField(
-                  validator: (value) => FormValidator.isPasswordValid(value: value),
+                  validator: (value) => FormValidator.isEmptyValid(value: value),
                   controller: controller.cnfPasswordController,
                   isCard: controller.isCnfPassword.value,
                   focusNode: controller.focusCnfPassword,

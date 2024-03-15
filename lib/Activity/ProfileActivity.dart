@@ -4,6 +4,7 @@ import 'package:attendance_app/Tool/Color.dart';
 import 'package:attendance_app/Tool/MyTextStyle.dart';
 import 'package:attendance_app/constant/imageconstants.dart';
 import 'package:attendance_app/constant/stringconstants.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -19,52 +20,63 @@ class _ProfileState extends State<ProfileActivity> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // backgroundColor: primary3Color,
-        body:
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SafeArea(
-              child: SizedBox(height: 20.px,)
-            ),
-            SizedBox(
-              height: 120.px, width: 120.px,
-              child: ClipRRect(
-                borderRadius: BorderRadius.all(
-                    Radius.circular(60.px)),
-                child:Image.asset(ImageConstants.girlImg,fit: BoxFit.cover),
+    return Obx(() {
+      controller.count.value;
+      return Scaffold(
+        // backgroundColor: primary3Color,
+          body:
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SafeArea(
+                  child: SizedBox(height: 20.px,)
               ),
-            ),
-            Text('James Donin', style: MyTextStyle.titleStyle16b,),
-            Text('James Donin@petra.africa', style: MyTextStyle.titleStyle12b,),
-            SizedBox(height: 20.px,),
-            Container(
-              height: 50.px,
-              width: double.infinity,
-              alignment: Alignment.center,
-              margin: EdgeInsets.only(left: 20.px,right: 20.px),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(25.px)),
-                  color: primaryColor
+              SizedBox(
+                height: 120.px, width: 120.px,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(60.px),
+                  child: CachedNetworkImage(
+                    imageUrl:'${controller.userModel!.userData!.image!}', fit:BoxFit.cover,width:120.px,height: 120.px,
+                    placeholder: (BuildContext context, String url) =>Image.asset(ImageConstants.girlImg,fit: BoxFit.fill,height: 120.px,width: 120.px,),
+                    errorWidget: (BuildContext context, String url, dynamic error) => Image.asset(ImageConstants.girlImg,fit: BoxFit.fill,height:120.px,width:120.px ,),
+                  ),
+                ),
               ),
-              clipBehavior: Clip.hardEdge,
-              child: Text(StringConstants.editProfile,style:MyTextStyle.titleStyle16bw,textAlign: TextAlign.center,),
-            ),
-            SizedBox(height: 10.px,),
-            Expanded(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: showNearEvents(),
-                // child:SizedBox() ,
+              Text(controller.userModel!.userData!.userName??'', style: MyTextStyle.titleStyle16b,),
+              Text(controller.userModel!.userData!.email??'', style: MyTextStyle.titleStyle12b,),
+              SizedBox(height: 20.px,),
+              GestureDetector(
+                onTap: (){
+                  controller.openEditProfile();
+                },
+                child: Container(
+                  height: 50.px,
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(left: 20.px,right: 20.px),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(25.px)),
+                      color: primaryColor
+                  ),
+                  clipBehavior: Clip.hardEdge,
+                  child: Text(StringConstants.editProfile,style:MyTextStyle.titleStyle16bw,textAlign: TextAlign.center,),
+                ),
               ),
-            ),
+              SizedBox(height: 10.px,),
+              Expanded(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: showNearEvents(),
+                  // child:SizedBox() ,
+                ),
+              ),
 
 
-          ],
-        )
+            ],
+          )
 
-    );
+      );
+    });
   }
 
   /// Show Near Events...

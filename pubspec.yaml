@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.1.3 <4.0.0'
+  sdk: '>=3.0.5 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -39,11 +39,13 @@ dependencies:
   fluttertoast: ^8.2.2
   #Validation for textfield_form...
   form_field_validator: ^1.1.0
+  #datePicker....
+  calendar_date_picker2: ^0.5.3
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  get: 4.6.6
+  get: any
   responsive_sizer: ^3.2.0
   #Shimmer loader viewer...
   shimmer: ^3.0.0
@@ -52,10 +54,13 @@ dependencies:
   location_geocoder: ^1.0.5
   open_apps_settings: ^0.0.4
   geolocator: ^7.6.2
-
+  #Catch image
+  cached_network_image: ^3.3.0
   #Get Widget ...
   getwidget: ^4.0.0
-
+  #Image Picker ....
+  image_picker: ^1.0.7
+  path: ^1.8.3
 
 dev_dependencies:
   flutter_test:
@@ -83,6 +88,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/fonts/digitnumber.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -36,8 +36,8 @@ class _SplashState extends State<SplashActivity> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
            SizedBox(
-             height: 200.px,width: 200.px,
-             child: Image.asset(ImageConstants.splashImg,fit: BoxFit.cover,),
+             height: 200.px,
+             child: Image.asset(ImageConstants.splashImg,fit: BoxFit.fitHeight,),
            )
 
           ],

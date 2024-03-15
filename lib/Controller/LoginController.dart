@@ -1,9 +1,13 @@
 import 'dart:convert';
 import 'package:attendance_app/Activity/SignUpActivity.dart';
+import 'package:attendance_app/apis/api_models/user_model.dart';
+import 'package:attendance_app/common/globalData.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../apis/api_constants/api_key_constants.dart';
+import '../apis/api_methods/api_methods.dart';
 import '../common/ShowToast.dart';
 import '../constant/stringconstants.dart';
 
@@ -22,7 +26,7 @@ class LoginController extends GetxController{
 
   final formKey = GlobalKey<FormState>();
   Map<String, dynamic> bodyParamsForSubmitLoginForm = {};
-  //LogInModel? logInModel;
+  UserModel? userModel;
   late SharedPreferences sharedPreferences;
 
   @override
@@ -65,6 +69,7 @@ class LoginController extends GetxController{
   }
 
   openHomeActivity(){
+    GlobalData.setUserModel(userModel!);
     Get.toNamed('/mainActivity');
   }
 
@@ -72,34 +77,34 @@ class LoginController extends GetxController{
     showProgressbar.value=value;
   }
 
-/*
+
   Future<void> callingSubmitLogInForm() async {
     bodyParamsForSubmitLoginForm = {
       ApiKeyConstants.email: emailPhoneController.text.toString(),
       ApiKeyConstants.password: passwordController.text.toString(),
 
     };
-    print("bodyParamsForGetEducationLevel:::::$bodyParamsForSubmitLoginForm");
-    logInModel = await ApiMethods.logInApi(
+    print("bodyParamsForSubmitLogin:::::$bodyParamsForSubmitLoginForm");
+    userModel = await ApiMethods.submitLoginForm(
         bodyParams: bodyParamsForSubmitLoginForm);
-    if (logInModel!.status!="0"??false ) {
-      saveDataSharedPreference(logInModel);
+    if (userModel!.status!="0"??false ) {
+      saveDataSharedPreference(userModel);
     }else{
       print("LogIn Failed....");
-      showToastMessage(logInModel!.message!);
+      showToastMessage(userModel!.message!);
       changeProgressbarStatus(false);
     }
   }
-  saveDataSharedPreference(LogInModel? userdata) async{
+  saveDataSharedPreference(UserModel? userdata) async{
     sharedPreferences=await SharedPreferences.getInstance();
     showToastMessage("Successfully Login Complete");
     print("LogIn Successfully complete...");
     String userDataString = jsonEncode(userdata);
     sharedPreferences.setString(StringConstants.userData, userDataString);
     changeProgressbarStatus(false);
-    //openHomeActivity();
-    Get.offAndToNamed('/mainActivity');
+    openHomeActivity();
+    //Get.offAndToNamed('/mainActivity');
 
-  }  */
+  }
 
 }
