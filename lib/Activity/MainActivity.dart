@@ -1,11 +1,9 @@
 import 'package:attendance_app/Activity/ApplyLeaveActivity.dart';
 import 'package:attendance_app/Activity/AttendanceActivity.dart';
-import 'package:attendance_app/Activity/ChatActivity.dart';
 import 'package:attendance_app/Activity/ProfileActivity.dart';
 import 'package:attendance_app/Controller/AttendanceController.dart';
 import 'package:attendance_app/apis/api_models/today_attendance_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -321,7 +319,8 @@ class _HomeState extends State<HomeActivity> {
                           height: 30,
                           width: 30,
                           child: CircularProgressIndicator(
-                            color: primary3Color,)),
+                            color: primary3Color,
+                          )),
                       const SizedBox(
                         width: 10,
                       ),
@@ -393,7 +392,8 @@ class _HomeState extends State<HomeActivity> {
                             SizedBox(
                               width: 5.px,
                             ),
-                            Text(StringConstants.checkOut,
+                            Text(
+                              StringConstants.checkOut,
                               style: MyTextStyle.titleStyle16bw,
                             )
                           ],
@@ -453,7 +453,8 @@ class _HomeState extends State<HomeActivity> {
                           borderRadius:
                               BorderRadius.all(Radius.circular(25.px)),
                           child: CachedNetworkImage(
-                            imageUrl: '${controller.userModel!.userData!.image!}',
+                            imageUrl:
+                                '${controller.userModel!.userData!.image!}',
                             fit: BoxFit.cover,
                             width: 50.px,
                             height: 50.px,
@@ -508,7 +509,10 @@ class _HomeState extends State<HomeActivity> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('HH:mm:ss',style: MyTextStyle.titleStyle14bb,),
+                              Text(
+                                'HH:mm:ss',
+                                style: MyTextStyle.titleStyle14bb,
+                              ),
                               Obx(() => Text(
                                     controller.workingTime.value,
                                     style: MyTextStyle.titleStyle16bb,
@@ -558,31 +562,36 @@ class _HomeState extends State<HomeActivity> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Obx(
-                                  () => Card(
+                              () => Card(
                                 shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                    BorderRadius.all(Radius.circular(10.px)),
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(10.px)),
                                     side: BorderSide(
                                         color: controller.tabIndex.value == 1
                                             ? primaryColor
                                             : primary3Color,
                                         width: 1.px)),
-                                elevation:
-                                controller.tabIndex.value == 1 ? 4.px : 1.px,
+                                elevation: controller.tabIndex.value == 1
+                                    ? 4.px
+                                    : 1.px,
                                 child: InkWell(
                                   onTap: () {
-                                    if((controller.tabType=='attendence'||controller.tabType=='lunch'||controller.tabType=='tea_break') && controller.statusType=='checkout'){
-
-                                    }else{
-                                      controller.changeTabIndex('attendence', 'OFF');
+                                    if ((controller.tabType == 'attendence' ||
+                                            controller.tabType == 'lunch' ||
+                                            controller.tabType ==
+                                                'tea_break') &&
+                                        controller.statusType == 'checkout') {
+                                    } else {
+                                      controller.changeTabIndex(
+                                          'attendence', 'OFF');
                                     }
-
                                   },
                                   child: Container(
                                     height: 140.px,
                                     width: 155.px,
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         SizedBox(
                                           height: 10.px,
@@ -606,21 +615,25 @@ class _HomeState extends State<HomeActivity> {
                                           padding: EdgeInsets.only(left: 20.px),
                                           child: Column(
                                             crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                                CrossAxisAlignment.start,
                                             children: [
                                               SizedBox(
                                                 height: 10.px,
                                               ),
-                                              Obx(() => Text(controller.printCrTime.value,
-                                                style: MyTextStyle.titleStyle16bb,
-                                              ),),
-
+                                              Obx(
+                                                () => Text(
+                                                  controller.printCrTime.value,
+                                                  style: MyTextStyle
+                                                      .titleStyle16bb,
+                                                ),
+                                              ),
                                               SizedBox(
                                                 height: 10.px,
                                               ),
                                               Text(
                                                 'On Time',
-                                                style: MyTextStyle.titleStyle12bl,
+                                                style:
+                                                    MyTextStyle.titleStyle12bl,
                                               ),
                                               SizedBox(
                                                 height: 10.px,
@@ -635,30 +648,32 @@ class _HomeState extends State<HomeActivity> {
                               ),
                             ),
                             Obx(
-                                  () => Card(
+                              () => Card(
                                 shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                    BorderRadius.all(Radius.circular(10.px)),
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(10.px)),
                                     side: BorderSide(
                                         color: controller.tabIndex.value == 2
                                             ? primaryColor
                                             : primary3Color,
                                         width: 1.px)),
-                                elevation:
-                                controller.tabIndex.value == 2 ? 5.px : 1.px,
+                                elevation: controller.tabIndex.value == 2
+                                    ? 5.px
+                                    : 1.px,
                                 child: InkWell(
                                   onTap: () {
-                                    if(controller.tabType=='attendence' && controller.statusType=='checkout'){
-                                      controller.changeTabIndex('attendence', 'NO');
-                                    }else{
-
-                                    }
+                                    if (controller.tabType == 'attendence' &&
+                                        controller.statusType == 'checkout') {
+                                      controller.changeTabIndex(
+                                          'attendence', 'NO');
+                                    } else {}
                                   },
                                   child: Container(
-                                    height: 130.px,
+                                    height: 135.px,
                                     width: 155.px,
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         SizedBox(
                                           height: 5.px,
@@ -682,20 +697,25 @@ class _HomeState extends State<HomeActivity> {
                                           padding: EdgeInsets.only(left: 20.px),
                                           child: Column(
                                             crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                                CrossAxisAlignment.start,
                                             children: [
                                               SizedBox(
                                                 height: 5.px,
                                               ),
-                                              Obx(() => Text(controller.printCrTime.value,
-                                                style: MyTextStyle.titleStyle16bb,
-                                              ),),
+                                              Obx(
+                                                () => Text(
+                                                  controller.printCrTime.value,
+                                                  style: MyTextStyle
+                                                      .titleStyle16bb,
+                                                ),
+                                              ),
                                               SizedBox(
                                                 height: 5.px,
                                               ),
                                               Text(
                                                 'On Time',
-                                                style: MyTextStyle.titleStyle12bl,
+                                                style:
+                                                    MyTextStyle.titleStyle12bl,
                                               ),
                                               SizedBox(
                                                 height: 10.px,
@@ -718,30 +738,35 @@ class _HomeState extends State<HomeActivity> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Obx(
-                                  () => Card(
+                              () => Card(
                                 shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                    BorderRadius.all(Radius.circular(10.px)),
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(10.px)),
                                     side: BorderSide(
                                         color: controller.tabIndex.value == 3
                                             ? primaryColor
                                             : primary3Color,
                                         width: 1.px)),
-                                elevation:
-                                controller.tabIndex.value == 3 ? 4.px : 1.px,
+                                elevation: controller.tabIndex.value == 3
+                                    ? 4.px
+                                    : 1.px,
                                 child: InkWell(
                                   onTap: () {
-                                    if((controller.tabType=='attendence'||controller.tabType=='lunch'||controller.tabType=='tea_break') && controller.statusType=='checkout'){
-
-                                    }else{
+                                    if ((controller.tabType == 'attendence' ||
+                                            controller.tabType == 'lunch' ||
+                                            controller.tabType ==
+                                                'tea_break') &&
+                                        controller.statusType == 'checkout') {
+                                    } else {
                                       controller.changeTabIndex('lunch', 'OFF');
                                     }
                                   },
                                   child: Container(
-                                    height: 140.px,
+                                    height: 145.px,
                                     width: 155.px,
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         SizedBox(
                                           height: 10.px,
@@ -765,20 +790,25 @@ class _HomeState extends State<HomeActivity> {
                                           padding: EdgeInsets.only(left: 20.px),
                                           child: Column(
                                             crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                                CrossAxisAlignment.start,
                                             children: [
                                               SizedBox(
                                                 height: 10.px,
                                               ),
-                                              Obx(() =>   Text(controller.printCrTime.value,
-                                                style: MyTextStyle.titleStyle16bb,
-                                              ),),
+                                              Obx(
+                                                () => Text(
+                                                  controller.printCrTime.value,
+                                                  style: MyTextStyle
+                                                      .titleStyle16bb,
+                                                ),
+                                              ),
                                               SizedBox(
                                                 height: 10.px,
                                               ),
                                               Text(
                                                 'On Time (00:30 min)',
-                                                style: MyTextStyle.titleStyle12bl,
+                                                style:
+                                                    MyTextStyle.titleStyle12bl,
                                               ),
                                               SizedBox(
                                                 height: 10.px,
@@ -793,31 +823,36 @@ class _HomeState extends State<HomeActivity> {
                               ),
                             ),
                             Obx(
-                                  () => Card(
+                              () => Card(
                                 shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                    BorderRadius.all(Radius.circular(10.px)),
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(10.px)),
                                     side: BorderSide(
                                         color: controller.tabIndex.value == 4
                                             ? primaryColor
                                             : primary3Color,
                                         width: 1.px)),
-                                elevation:
-                                controller.tabIndex.value == 4 ? 4.px : 1.px,
+                                elevation: controller.tabIndex.value == 4
+                                    ? 4.px
+                                    : 1.px,
                                 child: InkWell(
                                   onTap: () {
-                                    if((controller.tabType=='attendence'||controller.tabType=='lunch'||controller.tabType=='tea_break') && controller.statusType=='checkout'){
-
-                                    }else{
-                                      controller.changeTabIndex('tea_break', 'OFF');
+                                    if ((controller.tabType == 'attendence' ||
+                                            controller.tabType == 'lunch' ||
+                                            controller.tabType ==
+                                                'tea_break') &&
+                                        controller.statusType == 'checkout') {
+                                    } else {
+                                      controller.changeTabIndex(
+                                          'tea_break', 'OFF');
                                     }
-
                                   },
                                   child: Container(
                                     height: 140.px,
                                     width: 155.px,
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         SizedBox(
                                           height: 10.px,
@@ -841,20 +876,25 @@ class _HomeState extends State<HomeActivity> {
                                           padding: EdgeInsets.only(left: 20.px),
                                           child: Column(
                                             crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                                CrossAxisAlignment.start,
                                             children: [
                                               SizedBox(
                                                 height: 10.px,
                                               ),
-                                              Obx(() =>  Text(controller.printCrTime.value,
-                                                style: MyTextStyle.titleStyle16bb,
-                                              ),),
+                                              Obx(
+                                                () => Text(
+                                                  controller.printCrTime.value,
+                                                  style: MyTextStyle
+                                                      .titleStyle16bb,
+                                                ),
+                                              ),
                                               SizedBox(
                                                 height: 10.px,
                                               ),
                                               Text(
                                                 'On Time (00:15 min)',
-                                                style: MyTextStyle.titleStyle12bl,
+                                                style:
+                                                    MyTextStyle.titleStyle12bl,
                                               ),
                                               SizedBox(
                                                 height: 10.px,
@@ -891,16 +931,25 @@ class _HomeState extends State<HomeActivity> {
                               color: primaryColor),
                         )),
                   ),
-                  Obx(() => controller.presentData.value?
-                  showYourActivity():const Text("There are not present today attendance.",style:TextStyle(
-                    fontSize: 16,fontWeight: FontWeight.normal,color: Colors.redAccent,),textAlign: TextAlign.center,)
-                  ),
-                  SizedBox(height: 20.px,)
+                  Obx(() => controller.presentData.value
+                      ? showYourActivity()
+                      : const Text(
+                          "There are not present today attendance.",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.redAccent,
+                          ),
+                          textAlign: TextAlign.center,
+                        )),
+                  SizedBox(
+                    height: 20.px,
+                  )
                 ],
               ),
             ),
 
-          /*  Expanded(
+            /*  Expanded(
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child:
@@ -911,94 +960,108 @@ class _HomeState extends State<HomeActivity> {
         ));
   }
 
-
   /// Show Near Events...
   Widget showYourActivity() {
     return Obx(() => controller.showProgressbar.value
         ? Shimmer.fromColors(
-        baseColor: Colors.grey[300]!,
-        highlightColor: Colors.white,
-        enabled: controller.showProgressbar.value,
-        child: ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            padding: EdgeInsets.zero,
-            itemCount: 5,
-            itemBuilder: (BuildContext context, int index) {
-              return Padding(
-                padding: EdgeInsets.only(left: 10.px,right: 10.px,top: 10.px,bottom: 10.px),
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Container(
-                          height: 40.px, width:40.px,
-                          margin: EdgeInsets.all(5.px),
-                          decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
-                              color: Colors.black
+            baseColor: Colors.grey[300]!,
+            highlightColor: Colors.white,
+            enabled: controller.showProgressbar.value,
+            child: ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                padding: EdgeInsets.zero,
+                itemCount: 5,
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                        left: 10.px, right: 10.px, top: 10.px, bottom: 10.px),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Container(
+                              height: 40.px,
+                              width: 40.px,
+                              margin: EdgeInsets.all(5.px),
+                              decoration: const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  color: Colors.black),
+                            ),
                           ),
                         ),
-                      ),
+                        Expanded(
+                          flex: 4,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                height: 15.px,
+                                margin: EdgeInsets.only(
+                                    left: 5.px,
+                                    right: 5.px,
+                                    bottom: 5.px,
+                                    top: 5.px),
+                                decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    color: Colors.black),
+                              ),
+                              Container(
+                                height: 15.px,
+                                width: 150.px,
+                                margin: EdgeInsets.only(
+                                    left: 5.px,
+                                    right: 5.px,
+                                    bottom: 5.px,
+                                    top: 5.px),
+                                decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    color: Colors.black),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Container(
+                                height: 15.px,
+                                margin: EdgeInsets.only(
+                                    left: 5.px,
+                                    right: 5.px,
+                                    bottom: 5.px,
+                                    top: 5.px),
+                                decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    color: Colors.black),
+                              ),
+                              Container(
+                                height: 15.px,
+                                margin: EdgeInsets.only(
+                                    left: 5.px,
+                                    right: 5.px,
+                                    bottom: 5.px,
+                                    top: 5.px),
+                                decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    color: Colors.black),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                    Expanded(
-                      flex: 4,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 15.px,
-                            margin: EdgeInsets.only(left: 5.px, right: 5.px,bottom: 5.px,top: 5.px),
-                            decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.all(Radius.circular(5)),
-                                color: Colors.black
-                            ),
-                          ),
-                          Container(
-                            height: 15.px,
-                            width: 150.px,
-                            margin: EdgeInsets.only(left: 5.px, right: 5.px,bottom: 5.px,top: 5.px),
-                            decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.all(Radius.circular(5)),
-                                color: Colors.black
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Container(
-                            height: 15.px,
-                            margin: EdgeInsets.only(left: 5.px, right: 5.px,bottom: 5.px,top: 5.px),
-                            decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.all(Radius.circular(5)),
-                                color: Colors.black
-                            ),
-                          ),
-                          Container(
-                            height: 15.px,
-                            margin: EdgeInsets.only(left: 5.px, right: 5.px,bottom: 5.px,top: 5.px),
-                            decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.all(Radius.circular(5)),
-                                color: Colors.black
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-
-                  ],
-                ),
-              );
-            }
-        )
-    )
+                  );
+                }))
         : ListView.builder(
             physics: const ClampingScrollPhysics(),
             shrinkWrap: true,
@@ -1006,7 +1069,8 @@ class _HomeState extends State<HomeActivity> {
             scrollDirection: Axis.vertical,
             itemCount: controller.todayAttendanceModel!.result!.length,
             itemBuilder: (context, int index) {
-              TodayAttendanceResult item=controller.todayAttendanceModel!.result![index];
+              TodayAttendanceResult item =
+                  controller.todayAttendanceModel!.result![index];
               return Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10.px))),
@@ -1017,22 +1081,26 @@ class _HomeState extends State<HomeActivity> {
                   leading: SizedBox(
                     height: 35.px,
                     width: 35.px,
-                    child: Image.asset(getIcon(item.checkType!),
+                    child: Image.asset(
+                      getIcon(item.checkType!),
                       fit: BoxFit.fill,
                     ),
                   ),
                   horizontalTitleGap: 3.px,
-                  title: Text(item.checkType!,
+                  title: Text(
+                    item.checkType!,
                     style: MyTextStyle.titleStyle16bb,
                   ),
-                  subtitle: Text(item.date!,
+                  subtitle: Text(
+                    item.date!,
                     style: MyTextStyle.titleStyle12blb,
                   ),
                   trailing: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(DateFormat('h:mm a').format(DateTime.parse(item.time!)),
+                      Text(
+                        DateFormat('h:mm a').format(DateTime.parse(item.time!)),
                         style: MyTextStyle.titleStyle14bb,
                       ),
                       Text(
@@ -1047,19 +1115,21 @@ class _HomeState extends State<HomeActivity> {
           ));
   }
 
-  String getIcon(String checkType){
-    switch(checkType){
-      case'attendence':{
-        return IconsConstants.checkInIcon;
-      }
-    case'lunch':{
-    return IconsConstants.lunchTimeIcon;
-    }
-    case'tea_break':{
-    return IconsConstants.teaBreakIcon;
-    }
+  String getIcon(String checkType) {
+    switch (checkType) {
+      case 'attendence':
+        {
+          return IconsConstants.checkInIcon;
+        }
+      case 'lunch':
+        {
+          return IconsConstants.lunchTimeIcon;
+        }
+      case 'tea_break':
+        {
+          return IconsConstants.teaBreakIcon;
+        }
     }
     return IconsConstants.checkInIcon;
   }
-
 }

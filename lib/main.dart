@@ -18,13 +18,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'Larzu Attendence',
       getPages: [
-        GetPage(name: '/loginActivity', page: ()=>const LoginActivity()),
-        GetPage(name: '/mainActivity', page: ()=>const MainActivity()),
-        GetPage(name: '/attendanceDetailActivity', page:()=> const AttendanceDetailActivity()),
+        GetPage(name: '/loginActivity', page: () => const LoginActivity()),
+        GetPage(name: '/mainActivity', page: () => const MainActivity()),
+        GetPage(
+            name: '/attendanceDetailActivity',
+            page: () => const AttendanceDetailActivity()),
       ],
-      theme:Styles.themeData(false, context),
+      theme: Styles.themeData(false, context),
       debugShowCheckedModeBanner: false,
       home: const SplashActivity(title: 'Splash Activity'),
     );
